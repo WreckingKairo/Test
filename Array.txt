@@ -1,0 +1,20 @@
+"id = 1 and name='5'"
+
+$q = “Select cosstcent_id, section_id, costcenter_name from costcenter”;
+
+$db->query_assoc($q, array(“cosstcent_id”), false);
+array(0=>array(‘id’=>3, ‘name’=>’sdfsdf’, ‘section_id’=>2));
+
+$db->query_assoc($q, array(“cosstcent_id, section_id”), false);
+array(0=>array(2=>array(‘id’=>0, ‘section_id’=>2, ‘name’=> ‘costcenteer1’)));
+
+$db->query_assoc($q, array(“cosstcent_id, section_id”), true);
+array(0=>array(2=>array(0=>array(‘id’=>0, ‘section_id’=>2, ‘name’=> ‘costcenteer1’)), ));
+
+$db->query_assoc($q, array(“cosstcent_id, section_id”), false, PGSQL_ASSOC, false);
+array(0=>array(2=>array(‘id’=>0, ‘section_id’=>2, ‘name’=> ‘costcenteer1’)));
+
+$db->query_assoc($q, array(“cosstcent_id, section_id”), false, PGSQL_ASSOC,true);
+array(0=>array(2=>array(‘name’=> ‘costcenteer1’)));
+
+$db->query_insert(‘costcenter’, array(0=>array(‘costcenter_id’=>1, ‘costcenter_name’=>’cc1’)))
